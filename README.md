@@ -1,2 +1,8 @@
 # ASL_CNN
-H-CNN codes will be available once the manuscript is published.
+
+
+The process is divided into two steps
+ - Preprocessing
+ - Training
+
+For preprocessing,  
