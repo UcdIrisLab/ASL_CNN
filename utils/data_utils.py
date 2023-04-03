@@ -13,7 +13,7 @@ def gen_PCASL_base_datasets_DK(path, subject, fdata=True, flabel=True):
     Generate Datasets.
     """
     os.system("mkdir -p datasets/datas datasets/labels supports")
-    ltype = ['ATTgm','CBFgm']
+    ltype = ['ATT','CBF']
 
 
     print("Generating for " + subject + " Data")
