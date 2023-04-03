@@ -19,9 +19,7 @@ from utils import save_nii_image, calc_RMSE, loss_func, loss_func_y, repack_pred
                   MRIModel, parser, xls_append_data, load_nii_image, unmask_nii_data, loss_funcs, \
                   fetch_PCASL_test_data_DK, fetch_PCASL_train_data_DK
 
-# Constants
-#DK__________types = ['AD', 'MD', 'RD', 'FA', 'AK', 'KFA', 'MK', 'RK']
-types = ['ATTgm','CBFgm']
+types = ['ATT','CBF']
 
 
 ntypes = len(types)
