@@ -19,9 +19,8 @@ from utils import save_nii_image, calc_RMSE, loss_func, loss_func_y, repack_pred
                   MRIModel, parser, xls_append_data, load_nii_image, unmask_nii_data, loss_funcs, \
                   fetch_PCASL_test_data_DK, fetch_PCASL_train_data_DK
 
-# Constants
-#DK__________types = ['AD', 'MD', 'RD', 'FA', 'AK', 'KFA', 'MK', 'RK']
-types = ['ATTgm','CBFgm']
+
+types = ['ATT','CBF']
 
 
 ntypes = len(types)
@@ -35,12 +34,12 @@ train = args.train
 lr = 0.001
 epochs = args.epoch
 batch_size = 256
-nPWI = args.PWI      ##__DK       PWI = 150  what is this  \\hard input 109  DK
+nPWI = args.PWI     
 
 train_subjects = args.train_subjects
 test_subject = args.test_subject[0]
 
-combine = None  ##__DK    combine of bvals
+combine = None  
 convs = args.convs
 losss = 0
 con = args.con
@@ -65,12 +64,12 @@ savename = str(nPWI) + '-' + args.savename + '-' + args.model + '-' + \
            'patch' + '_' + str(patch_size) + \
            '-base_' + str(base)
 
-print(kernels) #DK
+
 
 if kernels is not None:
     savename += '-kernsle' + str(kernels)
 
-print(savename) #DK
+
 
 y_acc = None
 output_acc = None
@@ -94,10 +93,7 @@ if train:
                                        base=base,
                                        combine=combine,
                                        segment=segment)
-    print("in Train after fetch_PCASL_test_data_DK")
-    print(data.shape)  #DK
-    print(label.shape) #DK
-    print("--------\n")
+
 
     if mtype == 'conv2d_single':
         label = label[..., tgt:tgt+1]
@@ -116,15 +112,10 @@ if train:
                                                                    [reduce_lr, tensorboard, early_stop],
                                                                    savename, shuffle=not shuffle,
                                                                    validation_data=None)
-    print("--------")
-    print(output_loss)
-    print("--------\n")
 
 
 
 
-    print("nepoch -------",nepoch)
-print("DK check point MRI-gongthing line 148-----------------------------------")
 # Define the model
 mask = load_nii_image('supports/mask_' + test_subject + '.nii')
 tdata, tlabel = fetch_PCASL_test_data_DK(test_subject, mask, nPWI, mtype, combine=combine, segment=segment)
@@ -206,7 +197,7 @@ else:
     RMSE_NEW = np.zeros(ntypes)
 
 
-print("RMSE: ATT: ",RMSE[0],"RMSE: CBF: ",RMSE[1])  #DK
+print("RMSE: ATT: ",RMSE[0],"RMSE: CBF: ",RMSE[1]) 
 
 data = []
 data.append(['Net', savename])
