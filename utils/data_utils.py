@@ -19,7 +19,7 @@ def gen_PCASL_base_datasets_DK(path, subject, fdata=True, flabel=True):
     print("Generating for " + subject + " Data")
 
     if fdata:
-        data = load_nii_image(path + '/' + subject + '/PWI_GM_WM100_timing.nii')
+        data = load_nii_image(path + '/' + subject + '/PWI_timing.nii')
 
         savemat('datasets/datas/' + subject + '.mat', {'data':data})
 
